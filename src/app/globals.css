@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-special-elite);
+  --font-mono: var(--font-special-elite);
+  --font-heading: var(--font-bebas-neue);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  
+  --color-tooodoo-red: #D90429;
+  --color-tooodoo-bg: #0A0A0A;
+  --color-tooodoo-glow: rgba(217, 4, 41, 0.5);
+  
+  --animate-glitch: glitch 1s linear infinite;
+  
+  @keyframes glitch {
+    2%, 64% { transform: translate(2px,0) skew(0deg); }
+    4%, 60% { transform: translate(-2px,0) skew(0deg); }
+    62% { transform: translate(0,0) skew(5deg); }
+  }
+}
+
+:root {
+  /* Force dark theme with ToooDooo colors */
+  --background: oklch(0.16 0 0); /* #0A0A0A approx */
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.55 0.22 28); /* #D90429 approx */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.70 0 0);
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.22 28);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.55 0.22 28 / 30%); /* Reddish border */
+  --input: oklch(0.20 0 0);
+  --ring: oklch(0.55 0.22 28); /* Red focus ring */
+  --radius: 0.5rem; /* Softer, modern edges */
+}
+
+.dark {
+  --background: oklch(0.16 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.55 0.22 28);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.70 0 0);
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.22 28);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.55 0.22 28 / 30%);
+  --input: oklch(0.20 0 0);
+  --ring: oklch(0.55 0.22 28);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    cursor: crosshair !important; /* Custom sniper cursor */
+  }
+  
+  ::selection {
+    background-color: var(--color-tooodoo-red);
+    color: white;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom UI Elements for ToooDooo */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(10, 10, 10, 0.9) 100%),
+              radial-gradient(circle at 50% 0%, rgba(217, 4, 41, 0.1) 0%, transparent 60%),
+              linear-gradient(to bottom, rgba(10, 10, 10, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+  background-size: 100% 100%, 100% 100%, 100% 4px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 4, 41, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(217, 4, 41, 0.4);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(217, 4, 41, 0.6);
+}
