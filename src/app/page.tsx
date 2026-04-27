@@ -7,7 +7,7 @@ import { useTasks } from "@/hooks/useTasks";
 import { GlitchText } from "@/components/GlitchText";
 import { TaskCard } from "@/components/task/TaskCard";
 import { Button } from "@/components/ui/button";
-import { LogOut, Activity, Archive, Clock } from "lucide-react";
+import { LogOut, Activity, Archive, Clock, Crosshair } from "lucide-react";
 import { CreateTaskDialog } from "@/components/task/CreateTaskDialog";
 import { motion } from "framer-motion";
 
@@ -74,7 +74,8 @@ export default function Dashboard() {
       {/* Header */}
       <header className="border-b border-primary/20 bg-black/40 glass-panel sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <Crosshair className="w-6 h-6 text-tooodoo-red text-glow hidden sm:block" />
             <GlitchText text="ToooDooo" className="text-2xl font-black text-white text-glow hidden sm:block tracking-tight" />
             <div className="h-6 w-px bg-primary/30 hidden sm:block" />
             <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest">

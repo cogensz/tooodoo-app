@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { GlitchText } from "@/components/GlitchText";
-import { LogIn } from "lucide-react";
+import { LogIn, Crosshair } from "lucide-react";
 
 export default function LoginPage() {
   const { user, loading, loginWithGoogle } = useAuth();
@@ -42,7 +42,8 @@ export default function LoginPage() {
         whileHover={{ scale: 1.02 }}
         className="glass-panel w-full max-w-md p-8 flex flex-col gap-8 z-10 relative rounded-xl"
       >
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-2 flex flex-col items-center">
+          <Crosshair className="w-16 h-16 text-tooodoo-red mb-4 text-glow" />
           <GlitchText text="ToooDooo" className="text-5xl md:text-6xl font-black text-white text-glow tracking-tighter" />
           <p className="text-muted-foreground font-mono text-sm tracking-widest">TACTICAL TASK UPLINK</p>
         </div>
